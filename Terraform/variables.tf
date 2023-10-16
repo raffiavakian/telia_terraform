@@ -9,3 +9,14 @@ variable "bucket_name" {
   type = string
   default = "raffis-cv-bucket"
 }
+
+variable "key" {
+  description = "key for s3 object"
+  type = string
+  default = "cvraffi.pdf"
+}
+variable "filepath" {
+  description = "Path to file"
+  type = string
+  default = "/home/raffi/Desktop/Telia/cvraffi.pdf"
+}

@@ -1,5 +1,8 @@
-resource "aws_s3_bucket" "cv_bucket" {
+resource "aws_s3_object" "cv_object" {
   bucket = var.bucket_name
+  key    = var.key
+  source = var.filepath
+  depends_on = [aws_s3_bucket_policy.cv_bucket_policy]
 }
 
 resource "aws_s3_bucket_ownership_controls" "owner" {
