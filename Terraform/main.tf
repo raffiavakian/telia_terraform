@@ -1,8 +1,5 @@
-resource "aws_s3_object" "cv_object" {
+resource "aws_s3_bucket" "cv_bucket" {
   bucket = var.bucket_name
-  key    = var.key
-  source = var.filepath
-  depends_on = [aws_s3_bucket_policy.cv_bucket_policy]
 }
 
 resource "aws_s3_bucket_ownership_controls" "owner" {
@@ -14,7 +11,7 @@ resource "aws_s3_bucket_ownership_controls" "owner" {
 }
 
 resource "aws_s3_bucket_public_access_block" "block_acl_false" {
-  bucket = "${aws_s3_bucket.cv_bucket.id}"
+  bucket = aws_s3_bucket.cv_bucket.id
 
   block_public_acls   = false
   block_public_policy = false
@@ -39,9 +36,9 @@ depends_on = [aws_s3_bucket_ownership_controls.owner]
 }
 
 resource "aws_s3_object" "cv_object" {
-  bucket = var.bucket_name
-  key    = "cvraffi.pdf"
-  source = "/home/raffi/Desktop/Telia/cvraffi.pdf"
+  bucket = aws_s3_bucket.cv_bucket.id
+  key    = var.key
+  source = var.filepath
   depends_on = [aws_s3_bucket_policy.cv_bucket_policy]
 }
 
