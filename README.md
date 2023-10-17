@@ -1,4 +1,5 @@
 # # Telia Internship Challenge
+https://github.com/telia-oss/internship-challenge
 
 - Name: Raffi Avakian
 - School: Nackademin
